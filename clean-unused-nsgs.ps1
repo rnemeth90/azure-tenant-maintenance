@@ -31,7 +31,7 @@ foreach ($nsg in $nsgs){
         Write-Output "Deleted unused Network Security Group with Id: $($nsg.Id) "
     }
     else{
-        Write-Output "Did not delete any disks. Though, orphaned disks were found."
+        Write-Output "Did not delete any NSGs. Though, some were found."
         Write-Host "This NSG isn't used: " $nsg.Name
     }
 }
