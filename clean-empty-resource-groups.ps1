@@ -51,7 +51,7 @@ ForEach ($sub in $Subs) {
     foreach ($EmptyRG in $EmptyRGs){
         if ($deleteEmptyResourceGroups -eq 1) {
             Write-Output "Deleting unused Resource Group named: $($EmptyRG.Name)"
-            $EmptyRg | Remove-AzResourceGroup -Force
+            Remove-AzResourceGroup -Name $EmptyRG -Force
             Write-Output "Deleted unused Resource Group named: $($EmptyRG.Name)"
         }
         else{
