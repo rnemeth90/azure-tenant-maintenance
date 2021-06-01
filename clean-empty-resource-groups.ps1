@@ -16,9 +16,7 @@
      Version 1.0 - Initial
      Version 1.1 - Added retry logic for auth
 #>
-Import-Module AZ.Accounts
-Import-Module AZ.Storage
-
+Import-Module AZ.Resources
 # Set deleteUnattachedDisks=1 if you want to delete unattached Managed Disks
 # Set deleteUnattachedDisks=0 if you want to see the Id of the unattached Managed Disks
 $deleteEmptyResourceGroups=0
