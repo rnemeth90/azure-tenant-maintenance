@@ -38,7 +38,4 @@ foreach ($disk in $managedDisks) {
             Write-Output "Did not delete any disks. Though, orphaned disks were found."
         }
     }
-    else{
-        #Write-Output "Did not find any orphaned disks."
-    }
 }

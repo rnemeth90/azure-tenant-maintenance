@@ -32,6 +32,5 @@ foreach ($nsg in $nsgs){
     }
     else{
         Write-Output "Did not delete any NSGs. Though, some were found."
-        Write-Host "This NSG isn't used: " $nsg.Name
     }
 }
