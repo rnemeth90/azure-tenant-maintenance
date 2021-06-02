@@ -19,14 +19,14 @@
 Import-Module AZ.Resources
 # Set deleteUnattachedDisks=1 if you want to delete unattached Managed Disks
 # Set deleteUnattachedDisks=0 if you want to see the Id of the unattached Managed Disks
-$deleteEmptyResourceGroups=0
+$deleteEmptyResourceGroups=1
 $connectionName = "AzureRunAsConnection"
 # Ensures you do not inherit an AzContext in your runbook
 Disable-AzContextAutosave -Scope Process
 $connection = Get-AutomationConnection -Name $connectionName
 
 # Wrap authentication in retry logic for transient network failures
-$logonAttempt = 0
+$logonAttempt = 1
 while(!($connectionResult) -and ($logonAttempt -le 10)){
     $LogonAttempt++
     # Logging in to Azure...
@@ -50,9 +50,9 @@ ForEach ($sub in $Subs) {
     #Loop through the empty Resorce Groups asking if you would like to delete them. And then deletes them.
     foreach ($EmptyRG in $EmptyRGs){
         if ($deleteEmptyResourceGroups -eq 1) {
-            Write-Output "Deleting unused Resource Group named: $($EmptyRG.Name)"
+            Write-Output "Deleting unused Resource Group named: $EmptyRG.Name"
             Remove-AzResourceGroup -Name $EmptyRG -Force
-            Write-Output "Deleted unused Resource Group named: $($EmptyRG.Name)"
+            Write-Output "Deleted unused Resource Group named: $EmptyRG.Name"
         }
         else{
             Write-Output "Did not delete any Resource Groups. Though, some were found."
